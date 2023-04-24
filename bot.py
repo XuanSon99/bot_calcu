@@ -19,19 +19,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def messageHandler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     username = update.effective_user.username
     chat_id = update.effective_chat.id
-
-    if update.message.chat.type != "private":
-        return
     
-    text = update.message.text
+    try:
+        text = update.message.text
+        msg = f'{text} = {eval(text.replace(",","")):,}'  
+        await context.bot.send_message(chat_id, text=msg, parse_mode=constants.ParseMode.HTML)
+    except:
+        print("An exception occurred")
 
-    msg = f'{text} = {eval(text.replace(",","")):,}'  
-
-    await context.bot.send_message(chat_id, text=msg, parse_mode=constants.ParseMode.HTML)
+    
 
 
 app = ApplicationBuilder().token(
-    "6269543727:AAFpuVDGiM4MMQXqg6ztcSRa2zd5GCOz6rg").build()
+    "5974270430:AAHbYv4dSgycHWrL4Q5q8k_P2vigIa89kig").build()
 
 app.add_handler(CommandHandler("start", start)) 
 app.add_handler(MessageHandler(filters.ALL, messageHandler))
