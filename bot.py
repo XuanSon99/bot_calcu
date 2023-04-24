@@ -23,9 +23,11 @@ async def messageHandler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     if update.message.chat.type != "private":
         return
     
-    text = f'{eval(update.message.text.replace(",","")):,}'  
+    text = update.message.text
 
-    await context.bot.send_message(chat_id, text=text, parse_mode=constants.ParseMode.HTML)
+    msg = f'{text} = {eval(text.replace(",","")):,}'  
+
+    await context.bot.send_message(chat_id, text=msg, parse_mode=constants.ParseMode.HTML)
 
 
 app = ApplicationBuilder().token(
