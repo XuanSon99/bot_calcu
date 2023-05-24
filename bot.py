@@ -46,7 +46,7 @@ async def messageHandler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         print("An exception occurred")
 
 app = ApplicationBuilder().token(
-    "6217705988:AAEOYp5g31rkl-iWrXAGE_mo7t0f0Oz3qIo").build()
+    "5974270430:AAHbYv4dSgycHWrL4Q5q8k_P2vigIa89kig").build()
 
 app.add_handler(CommandHandler("start", start)) 
 app.add_handler(MessageHandler(filters.ALL, messageHandler))
